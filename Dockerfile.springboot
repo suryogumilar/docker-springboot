@@ -1,5 +1,6 @@
-FROM openjdk:14-jdk-alpine3.10
+FROM openjdk:18-jdk-alpine3.13
 LABEL description="image to contain a springboot microservice app"
 RUN mkdir -p /usr/src/app && chmod 755 /usr/src/app
 WORKDIR /usr/src/app
-CMD /opt/openjdk-14/bin/java -jar ${JARNAME}
+#CMD /opt/openjdk-14/bin/java ${JVM_ARGS} -jar ${JARNAME} ${APPS_ARGS}
+CMD ${RUN_SCRIPT}
