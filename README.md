@@ -1,11 +1,13 @@
 # Docker untuk execute Spring Boot apps
 
-using openjdk
+using jdk 18 oracle we build base image first:   
+`docker build -t local-jdk18ora:0.0.1 -f Dockerfile.jdk18 .`
 
+to run jdk 18 oracle:   
+`docker run --rm -it --name tesjdk local-jdk18ora:0.0.1 /bin/bash`
 
-build:   
+build for microservice using base image created:   
 `docker build -t local-springboot-service:0.0.1 -f Dockerfile.springboot .`
-
 
 run example: 
 

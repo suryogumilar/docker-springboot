@@ -1,0 +1,6 @@
+FROM centos:centos8.3.2011
+RUN mkdir /opt/jdk && chmod 755 /opt/jdk
+COPY zp/jdk-8u301-linux-x64.tar.gz /opt/jdk
+ENV JAVA_HOME=/opt/jdk/jdk1.8.0_301/
+RUN cd /opt/jdk && tar -zxvf jdk-8u301-linux-x64.tar.gz && rm /opt/jdk/jdk-8u301-linux-x64.tar.gz 
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/jdk/jdk1.8.0_301/bin

@@ -1,4 +1,4 @@
-FROM openjdk:18-jdk-alpine3.13
+FROM local-jdk18ora:0.0.1
 LABEL description="image to contain a springboot microservice app"
 RUN mkdir -p /usr/src/app && chmod 755 /usr/src/app
 WORKDIR /usr/src/app
