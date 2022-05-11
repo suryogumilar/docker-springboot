@@ -1,0 +1,10 @@
+FROM local-jdk18ora:0.0.1
+RUN mkdir /opt/gradle && chmod 755 /opt/gradle && \
+ sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-* && \
+ sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-* && \
+ echo 'diskspacecheck=0' >> /etc/dnf/dnf.conf && \
+ yum -y install unzip
+COPY zp/gradle-2.14-bin.zip /opt/gradle
+ENV GRADLE_HOME=/opt/gradle/gradle-2.14-bin/
+RUN cd /opt/gradle && unzip ./gradle-2.14-bin.zip && rm gradle-2.14-bin.zip && adduser gradle
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/jdk/jdk1.8.0_301/bin:/opt/gradle/gradle-2.14/bin
